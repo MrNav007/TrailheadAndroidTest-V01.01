@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+  api project(':libs:SmartSync') // From node_modules
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        targetSdkVersion 28
+        minSdkVersion 21
+    }
+  
+  buildTypes {
+      debug {
+         testCoverageEnabled = true
+      }
+   }
+
+  sourceSets {
+
+    main {
+      manifest.srcFile 'AndroidManifest.xml'
+      java.srcDirs = ['src']
+      resources.srcDirs = ['src']
+      aidl.srcDirs = ['src']
+      renderscript.srcDirs = ['src']
+      res.srcDirs = ['res']
+      assets.srcDirs = ['assets']
+    }
+  }
+  packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/NOTICE'
+  }
+}
